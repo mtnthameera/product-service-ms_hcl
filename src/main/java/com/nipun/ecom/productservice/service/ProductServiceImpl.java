@@ -72,6 +72,7 @@ public class ProductServiceImpl implements ProductService {
         return repository.findByProductCode(productCode)
                 .orElseThrow(() -> new ProductNotFoundException("Invalid Product Code" + productCode))
                 .getStockQuantity();
+
     }
 
     @Override
