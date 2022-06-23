@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDTO saveProduct(Product product) {
+    public ProductDTO saveProduct(ProductDTO product) {
         LOGGER.debug("ProductServiceImpl::saveProduct");
         Optional<Product> match = repository.findByProductCode(product.getProductCode());
         if (match.isPresent()) {
@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
             prod.setStockQuantity(prod.getStockQuantity() + product.getStockQuantity());
             return mapper.map(repository.save(prod), ProductDTO.class);
         }
-        return mapper.map(repository.save(product), ProductDTO.class);
+        return mapper.map(repository.save(mapper.map(product,Product.class)), ProductDTO.class);
     }
 
     @Override

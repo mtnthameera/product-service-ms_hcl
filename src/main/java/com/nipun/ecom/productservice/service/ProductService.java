@@ -17,7 +17,7 @@ public interface ProductService {
 
     List<Product> getAllProducts();
 
-    ProductDTO saveProduct(Product product);
+    ProductDTO saveProduct(ProductDTO product);
 
     Integer getAvailableUnits(String productCode);
 

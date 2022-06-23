@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 public class ProductDTO {
-
     private Long productId;
     @NotEmpty(message = "Please provide product name")
     private String name;
@@ -27,6 +26,6 @@ public class ProductDTO {
     private String description;
     @NotEmpty(message = "Please provide product Code")
     private String productCode;
-    @NotEmpty(message = "Please provide product Stocks")
+    @NotNull(message = "Please provide product Stocks")
     private Integer stockQuantity;
 }

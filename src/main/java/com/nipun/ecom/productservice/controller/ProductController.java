@@ -1,7 +1,6 @@
 package com.nipun.ecom.productservice.controller;
 
 import com.nipun.ecom.productservice.dto.ProductDTO;
-import com.nipun.ecom.productservice.model.Product;
 import com.nipun.ecom.productservice.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,13 +40,13 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> saveNewProduct(@Valid @RequestBody Product product) {
+    public ResponseEntity<ProductDTO> saveNewProduct(@Valid @RequestBody ProductDTO product) {
         LOGGER.info("Saving new product.");
         return ResponseEntity.ok().body(productService.saveProduct(product));
     }
 
     @GetMapping("/stocks/{productCode}")
-    public ResponseEntity<Integer> getAvailableUnits(@Valid @PathVariable String productCode){
+    public ResponseEntity<Integer> getAvailableUnits(@PathVariable String productCode){
         LOGGER.info("Checking product availability.");
         return ResponseEntity.ok().body(productService.getAvailableUnits(productCode));
     }
